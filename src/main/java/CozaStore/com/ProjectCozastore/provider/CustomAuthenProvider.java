@@ -27,15 +27,17 @@ public class CustomAuthenProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         //Lấy username người dùng truyền vào
-        String username = authentication.getName();
+        String email = authentication.getName();
+        System.out.print(email);
         //Lấy mật khẩu người dùng truyền vào
         String password = authentication.getCredentials().toString();
 
-        UserEntity user = userRepository.findByEmail(username);
+        UserEntity user = userRepository.findByEmail(email);
 
         if(user != null && passwordEncoder.matches(password,user.getPassword())){
+            System.out.print("success");
             //Đăng nhập thành công
-            return new UsernamePasswordAuthenticationToken(username,user.getPassword(),new ArrayList<>());
+            return new UsernamePasswordAuthenticationToken(email,user.getPassword(),new ArrayList<>());
         }
 
         return null;

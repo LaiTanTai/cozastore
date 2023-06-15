@@ -1,6 +1,6 @@
 package CozaStore.com.ProjectCozastore.Entity;
 
-import com.cybersoft.cozastore_java21.entity.ids.OrderDetailIds;
+import CozaStore.com.ProjectCozastore.Entity.ids.OrderDetailIds;
 
 import javax.persistence.*;
 
